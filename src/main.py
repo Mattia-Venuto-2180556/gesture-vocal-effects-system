@@ -1,7 +1,7 @@
 import cv2
 from gestures import GestureProcessor
 
-mode = "MOD_2"  
+mode = "MOD_1"  
 
 if mode == "MOD_1":
     from effects_controls_MOD_1 import EffectsControllerMOD1
@@ -281,14 +281,24 @@ while cap.isOpened():
                     effects.send_modulation(selected_effect, pinch_value)
 
     # UI OVERLAY
-    cv2.putText(frame, f"Left gesture: {left_gesture}", (10, 40),
+    cv2.putText(frame, f"Left gesture (effect selection): {left_gesture}", (10, 40),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
 
-    cv2.putText(frame, f"Right gesture: {right_gesture}", (10, 80),
+    cv2.putText(frame, f"Right gesture (modulation): {right_gesture}", (10, 80),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
 
-    cv2.putText(frame, f"Selected effect: {selected_effect}", (10, 120),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
+    effect_labels = {
+        "EFFECT_1": "EFFECT_1 - REVERB",
+        "EFFECT_2": "EFFECT_2 - DELAY",
+        "EFFECT_3": "EFFECT_3 - RINGSHIFTER",
+        "NONE": "NONE"
+    }
+    
+    display_effect = effect_labels.get(selected_effect, selected_effect)
+    
+    cv2.putText(frame, f"Selected effect: {display_effect}",
+                (10, 120), cv2.FONT_HERSHEY_SIMPLEX,
+                1, (0, 0, 255), 2)
 
     cv2.putText(frame, f"Right pinch value: {pinch_value}", (10, 160),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 180, 0), 2)
