@@ -107,6 +107,13 @@ def remap_mod2_output(value):
 
 cap = cv2.VideoCapture(0)
 
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+
+WINDOW_NAME = "Two-Hand Gesture Control System"
+cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
+cv2.resizeWindow(WINDOW_NAME, 960, 540)
+
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
@@ -280,13 +287,62 @@ while cap.isOpened():
                     
                     effects.send_modulation(selected_effect, pinch_value)
 
+    
     # UI OVERLAY
-    cv2.putText(frame, f"Left gesture (effect selection): {left_gesture}", (10, 40),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
+    
+    # UI OVERLAY
 
-    cv2.putText(frame, f"Right gesture (modulation): {right_gesture}", (10, 80),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
-
+    display_frame = cv2.resize(frame, (900, 534), interpolation=cv2.INTER_AREA)
+    
+    if mode == "MOD_1":
+        mode_text = "MOD 1 - PINCHING"
+    else:
+        mode_text = "MOD 2 - HAND OPENNESS"
+    
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    
+    # Titolo modalità — in alto a destra
+    title_font_scale = 0.9
+    title_thickness = 2
+    title_margin = 25
+    title_y = 45
+    
+    (text_w, text_h), _ = cv2.getTextSize(
+        mode_text,
+        font,
+        title_font_scale,
+        title_thickness
+    )
+    
+    title_x = display_frame.shape[1] - text_w - title_margin
+    
+    cv2.putText(
+        display_frame,
+        mode_text,
+        (title_x, title_y),
+        font,
+        title_font_scale,
+        (0, 0, 0),
+        title_thickness + 3
+    )
+    
+    cv2.putText(
+        display_frame,
+        mode_text,
+        (title_x, title_y),
+        font,
+        title_font_scale,
+        (255, 255, 255),
+        title_thickness
+    )
+    
+    # Info gesture — lato sinistro
+    cv2.putText(display_frame, f"Left gesture (effect selection): {left_gesture}", (10, 35),
+                font, 0.6, (255, 0, 0), 2)
+    
+    cv2.putText(display_frame, f"Right gesture (modulation): {right_gesture}", (10, 70),
+                font, 0.6, (255, 0, 0), 2)
+    
     effect_labels = {
         "EFFECT_1": "EFFECT_1 - REVERB",
         "EFFECT_2": "EFFECT_2 - DELAY",
@@ -296,22 +352,20 @@ while cap.isOpened():
     
     display_effect = effect_labels.get(selected_effect, selected_effect)
     
-    cv2.putText(frame, f"Selected effect: {display_effect}",
-                (10, 120), cv2.FONT_HERSHEY_SIMPLEX,
-                1, (0, 0, 255), 2)
-
-    cv2.putText(frame, f"Right pinch value: {pinch_value}", (10, 160),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 180, 0), 2)
-
-    cv2.putText(frame, f"Norm: {normalized_value:.2f}", (10, 240),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
-
+    cv2.putText(display_frame, f"Selected effect: {display_effect}", (10, 110),
+                font, 0.6, (0, 0, 255), 2)
+    
+    cv2.putText(display_frame, f"Right pinch value: {pinch_value}", (10, 150),
+                font, 0.6, (0, 180, 0), 2)
+    
     if right_pinch_distance is not None:
-        cv2.putText(frame, f"Pinch distance: {right_pinch_distance:.3f}", (10, 200),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 180, 0), 2)
-
-    cv2.imshow("Two-Hand Gesture Control System", frame)
-
+        cv2.putText(display_frame, f"Pinch distance: {right_pinch_distance:.3f}", (10, 190),
+                    font, 0.6, (0, 180, 0), 2)
+    
+    cv2.putText(display_frame, f"Norm: {normalized_value:.2f}", (10, 230),
+                font, 0.6, (0, 255, 255), 2)
+    
+    cv2.imshow(WINDOW_NAME, display_frame)
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 
