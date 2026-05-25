@@ -205,13 +205,20 @@ The evaluation is based on four binary-coded quantitative metrics.
 
 ## Experimental Results
 
-Preliminary testing activities were conducted in order to compare the two proposed interaction modalities in a real-time vocal performance scenario.
+The following table compares the performance achieved by the two interaction modalities.
 
-Overall, the results suggest that the pinch-distance interaction modality provides a more reliable and controllable experience during performance. Users generally found this approach more intuitive, more stable over time, and less prone to unintended activations while modulating audio effects.
+| Metric | Modality 1 — Pinch distance | Modality 2 — Hand openness |
+|---|---:|---:|
+| Accuracy | 89/100 = 89% | 66/100 = 66% |
+| Stability | 79/100 = 79% | 63/100 = 63% |
+| Error Rate | 92/100 = 92% | 62/100 = 62% |
+| Learnability | 87/100 = 87% | 66/100 = 66% |
+| **Overall total** | **347/400 = 86.75%** | **257/400 = 64.25%** |
 
-By contrast, the hand-openness modality showed lower consistency during interaction, particularly in situations involving rapid movements or continuous modulation. This behavior occasionally generated unwanted variations in the controlled parameters, reducing the overall sense of precision and control perceived by the user.
+Overall, the results indicate that Modality 1, based on pinch distance, is the most effective, reliable and replicable interaction strategy. It achieves superior performance across all metrics: it is more accurate, more stable, less prone to unwanted activations and easier to learn.
 
-Despite these differences, both modalities demonstrated the technical feasibility of real-time gesture-based vocal effect control through computer vision and MIDI communication.
+By contrast, Modality 2, based on hand openness, shows weaker and less consistent performance. The most critical issue concerns error control: the Error Rate score is 62% for Modality 2, compared with 92% for Modality 1. This aspect is particularly relevant in a real-time musical scenario, where an undesired activation can compromise the continuity of the performance or inadvertently alter the resulting sound.
+
 
 ---
 
