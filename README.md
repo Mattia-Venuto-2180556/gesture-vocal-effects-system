@@ -6,6 +6,14 @@ The system uses the integrated camera of a personal computer as visual input. Ha
 
 ---
 
+## Project Purpose
+
+The project aims to allow singers to handle their voice during recording by means of intuitive hand gestures. In a typical recording scenario, the singer may not possess the technical knowledge required to configure or manipulate production parameters directly. However, the singer often has a clear expressive perception of how their voice should be modulated at specific points in the track.
+
+The proposed system addresses this gap by enabling the singer to trigger and control vocal effects, such as reverb or modulation, during the recording process. In this way, the producer can more easily understand the singer's desired vocal treatment and may use these real-time expressive indications as a source of inspiration during the production phase.
+
+---
+
 ## Quickstart
 
 Follow these steps to configure and run the project locally.
@@ -23,6 +31,8 @@ source .venv/bin/activate
 
 pip install -r requirements.txt
 ```
+> [!WARNING]
+> **DISCLAIMER:** Logic Pro X is a professional Digital Audio Workstation (DAW) developed exclusively for Apple computers running the macOS operating system. Consequently, to properly test the proposed interaction system an Apple-based hardware and software environment is required.
 
 The implementation is based on the following technological workflow:
 
@@ -60,15 +70,7 @@ python main.py
 
 Once the system is running, the user performs gestures in front of the webcam. The gesture-recognition module detects the hands, extracts hand landmarks, classifies the gesture and infers the corresponding command to be sent to the audio engine.
 
----
 
-## Project Purpose
-
-The project aims to allow singers to handle their voice during recording by means of intuitive hand gestures. In a typical recording scenario, the singer may not possess the technical knowledge required to configure or manipulate production parameters directly. However, the singer often has a clear expressive perception of how their voice should be modulated at specific points in the track.
-
-The proposed system addresses this gap by enabling the singer to trigger and control vocal effects, such as reverb or modulation, during the recording process. In this way, the producer can more easily understand the singer's desired vocal treatment and may use these real-time expressive indications as a source of inspiration during the production phase.
-
----
 
 ## System Architecture
 
@@ -203,19 +205,13 @@ The evaluation is based on four binary-coded quantitative metrics.
 
 ## Experimental Results
 
-The following table compares the performance achieved by the two interaction modalities.
+Preliminary testing activities were conducted in order to compare the two proposed interaction modalities in a real-time vocal performance scenario.
 
-| Metric | Modality 1 — Pinch distance | Modality 2 — Hand openness |
-|---|---:|---:|
-| Accuracy | 89/100 = 89% | 66/100 = 66% |
-| Stability | 79/100 = 79% | 63/100 = 63% |
-| Error Rate | 92/100 = 92% | 62/100 = 62% |
-| Learnability | 87/100 = 87% | 66/100 = 66% |
-| **Overall total** | **347/400 = 86.75%** | **257/400 = 64.25%** |
+Overall, the results suggest that the pinch-distance interaction modality provides a more reliable and controllable experience during performance. Users generally found this approach more intuitive, more stable over time, and less prone to unintended activations while modulating audio effects.
 
-Overall, the results indicate that Modality 1, based on pinch distance, is the most effective, reliable and replicable interaction strategy. It achieves superior performance across all metrics: it is more accurate, more stable, less prone to unwanted activations and easier to learn.
+By contrast, the hand-openness modality showed lower consistency during interaction, particularly in situations involving rapid movements or continuous modulation. This behavior occasionally generated unwanted variations in the controlled parameters, reducing the overall sense of precision and control perceived by the user.
 
-By contrast, Modality 2, based on hand openness, shows weaker and less consistent performance. The most critical issue concerns error control: the Error Rate score is 62% for Modality 2, compared with 92% for Modality 1. This aspect is particularly relevant in a real-time musical scenario, where an undesired activation can compromise the continuity of the performance or inadvertently alter the resulting sound.
+Despite these differences, both modalities demonstrated the technical feasibility of real-time gesture-based vocal effect control through computer vision and MIDI communication.
 
 ---
 
