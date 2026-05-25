@@ -30,7 +30,7 @@ The implementation is based on the following technological workflow:
 Python + MediaPipe + OpenCV + OSC/MIDI + DAW
 ```
 > [!WARNING]
-> **DISCLAIMER:** Logic Pro X is a professional Digital Audio Workstation (DAW) developed exclusively for Apple computers running the macOS operating system. Consequently, the implementation, execution, and real-time testing of the proposed interaction system require an Apple-based hardware and software environment to ensure full compatibility with MIDI routing, virtual MIDI port management (IAC Driver), and real-time audio processing functionalities.
+> **DISCLAIMER:** Logic Pro X is a professional Digital Audio Workstation (DAW) developed exclusively for Apple computers running the macOS operating system. Consequently, to properly test the proposed interaction system an Apple-based hardware and software environment is required.
 
 where:
 
