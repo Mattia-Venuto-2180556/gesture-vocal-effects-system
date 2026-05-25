@@ -208,6 +208,9 @@ The evaluation is based on four binary-coded quantitative metrics.
 
 The following table compares the performance achieved by the two interaction modalities.
 
+> [!NOTE]
+> **Validation Participants:** The experimental validation phase involved approximately ten participants with heterogeneous backgrounds and varying levels of familiarity with music production systems and gesture-based interaction. This preliminary evaluation was conducted to assess the usability, stability, learnability, and overall reliability of the proposed interaction modalities within a realistic vocal performance scenario.
+
 | Metric | Modality 1 — Pinch distance | Modality 2 — Hand openness |
 |---|---:|---:|
 | Accuracy | 89/100 = 89% | 66/100 = 66% |
