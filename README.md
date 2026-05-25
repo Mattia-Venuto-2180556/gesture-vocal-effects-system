@@ -152,6 +152,7 @@ The right hand is used to modulate the selected effect. Two alternative modulati
 
 A dedicated reset gesture is used to turn off all effects at once. The two right-hand modulation strategies are compared in order to evaluate which interaction style provides the best balance between accuracy, responsiveness and perceived control in a vocal-performance scenario.
 
+![Pinch distance interaction demo](assets/images/pinch_distance_interaction_demo.png)
 ---
 
 ## Audio Engine and MIDI Control
