@@ -6,6 +6,14 @@ The system uses the integrated camera of a personal computer as visual input. Ha
 
 ---
 
+## Project Purpose
+
+The project aims to allow singers to handle their voice during recording by means of intuitive hand gestures. In a typical recording scenario, the singer may not possess the technical knowledge required to configure or manipulate production parameters directly. However, the singer often has a clear expressive perception of how their voice should be modulated at specific points in the track.
+
+The proposed system addresses this gap by enabling the singer to trigger and control vocal effects, such as reverb or modulation, during the recording process. In this way, the producer can more easily understand the singer's desired vocal treatment and may use these real-time expressive indications as a source of inspiration during the production phase.
+
+---
+
 ## Quickstart
 
 Follow these steps to configure and run the project locally.
@@ -62,15 +70,7 @@ python main.py
 
 Once the system is running, the user performs gestures in front of the webcam. The gesture-recognition module detects the hands, extracts hand landmarks, classifies the gesture and infers the corresponding command to be sent to the audio engine.
 
----
 
-## Project Purpose
-
-The project aims to allow singers to handle their voice during recording by means of intuitive hand gestures. In a typical recording scenario, the singer may not possess the technical knowledge required to configure or manipulate production parameters directly. However, the singer often has a clear expressive perception of how their voice should be modulated at specific points in the track.
-
-The proposed system addresses this gap by enabling the singer to trigger and control vocal effects, such as reverb or modulation, during the recording process. In this way, the producer can more easily understand the singer's desired vocal treatment and may use these real-time expressive indications as a source of inspiration during the production phase.
-
----
 
 ## System Architecture
 
